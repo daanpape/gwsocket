@@ -14,7 +14,7 @@ typedef struct
 } SHA1_CTX;
 
 extern void SHA1Init (SHA1_CTX * context);
-extern void SHA1Update (SHA1_CTX * context, uint8_t * data, uint32_t len);
+extern void SHA1Update (SHA1_CTX * context, const unsigned char * data, uint32_t len);
 extern void SHA1Final (uint8_t digest[20], SHA1_CTX * context);
 
 #endif // for #ifndef SHA1_H
