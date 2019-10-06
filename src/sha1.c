@@ -60,10 +60,14 @@ SHA1Transform (uint32_t state[5], uint8_t buffer[64])
   } CHAR64LONG16;
   CHAR64LONG16 *block;
 #ifdef SHA1HANDSOFF
-  static uint8_t workspace[64];
-  block = (CHAR64LONG16 *) workspace;
-  memcpy (block, buffer, 64);
+  static CHAR64LONG16 workspace = { 0 };
+  block = &workspace;
+  memcpy(block->c, buffer, 64);
+  // static uint8_t workspace[64];
+  // block = (CHAR64LONG16 *) workspace;
+  // memcpy (block, buffer, 64);
 #else
+  
   block = (CHAR64LONG16 *) buffer;
 #endif
   /* Copy context->state[] to working vars */
